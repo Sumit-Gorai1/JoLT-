@@ -4,9 +4,17 @@
 
 <h1 align="center">JoLT — Indian Stock Market Intelligence & Decision Support</h1>
 
+<p align="center">
+  <a href="https://jolt-app.ai.studio" target="_blank" rel="noopener noreferrer">
+    <strong>Launch Live App — Open JoLT Dashboard &rarr;</strong>
+  </a>
+</p>
+
+**Direct Published App Link:** [https://jolt-app.ai.studio](https://jolt-app.ai.studio)
+
 **JoLT** is a full-stack Indian equity market intelligence and causal transmission platform built for NSE and BSE research. It continuously ingests statutory filings, global macro shifts, commodity benchmarks, and sector deal flows, synthesizes them through a **10-Agent Collaborative Pipeline**, scores institutional polarity via the **JoLT Sentiment Engine**, and presents actionable, falsifiable decision support before and during live market hours (`09:15 – 15:30 IST`).
 
-> **Brand Assets**: Standalone JoLT logo files are included at [`public/jolt-logo.jpg`](public/jolt-logo.jpg) (high-resolution crystal emblem) and [`public/jolt-logo.svg`](public/jolt-logo.svg) (scalable vector icon / browser favicon).
+> **Brand Assets**: Standalone JoLT brand files are included at [`public/jolt-logo.jpg`](public/jolt-logo.jpg) (high-resolution crystal emblem), [`public/jolt-logo.svg`](public/jolt-logo.svg) (scalable vector icon), and [`public/favicon.ico`](public/favicon.ico) (application favicon).
 
 ---
 
@@ -72,6 +80,8 @@ JoLT splits equity event analysis into **10 autonomous analytical bots** coordin
 ---
 
 ## How to Use JoLT
+
+> **Open Instantly Online:** Visit the published JoLT deployment at **[https://jolt-app.ai.studio](https://jolt-app.ai.studio)** — no local installation required.
 
 1. **Switch Color Palettes & Monitor Live Ticker**: Use the top-left switcher (**Aurora**, **Cobalt**, **Jade**, **Orchid**) to change the dynamic glassmorphism theme on the fly, while the top ticker bar streams live **NIFTY 50**, **SENSEX**, **BANK NIFTY**, **NIFTY IT**, **NIFTY PHARMA**, **BRENT CRUDE**, **USD / INR**, and **INDIA VIX**.
 2. **Search Any Stock or Sector**: Type a symbol or company name (such as `HAL`, `BPCL`, `TCS`, `KAYNES`, or any custom `.NS` symbol) in the header search bar. Press **Enter** or click a result to open the **Stock Deep Dive Modal**, or jump directly to matching sectors and news items.
