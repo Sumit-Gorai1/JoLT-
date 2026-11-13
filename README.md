@@ -12,26 +12,27 @@
 
 **Direct Published App Link:** [https://jolt-app.ai.studio](https://jolt-app.ai.studio)
 
-**JoLT** is a full-stack Indian equity market intelligence and causal transmission platform built for NSE and BSE research. It continuously ingests statutory filings, global macro shifts, commodity benchmarks, and sector deal flows, synthesizes them through a **10-Agent Collaborative Pipeline**, scores institutional polarity via the **JoLT Sentiment Engine**, and presents actionable, falsifiable decision support before and during live market hours (`09:15 – 15:30 IST`).
+**JoLT** is an AI-powered news intelligence platform that analyses financial and geopolitical developments, identifies their potential impact on companies, sectors and markets, and evaluates the overall sentiment to help users understand the bigger picture.
 
 > **Brand Assets**: Standalone JoLT brand files are included at [`public/jolt-logo.jpg`](public/jolt-logo.jpg) (high-resolution crystal emblem), [`public/jolt-logo.svg`](public/jolt-logo.svg) (scalable vector icon), and [`public/favicon.ico`](public/favicon.ico) (application favicon).
 
 ---
 
-## Key Highlights
+## Key Highlights & Recent Capabilities
 
-- **Real-Time Market Benchmark Ticker**: Live streaming prices for **NIFTY 50**, **SENSEX**, **BANK NIFTY**, **NIFTY IT**, **NIFTY PHARMA**, **BRENT CRUDE**, **USD / INR**, and **INDIA VIX** fetched dynamically via backend Yahoo Finance quote batching (`query1`/`query2` failover with 3-minute snapshot caching) alongside live NSE/BSE equity quotes.
-- **Crystal Glassmorphic Design & Dynamic Color Palettes**: Transparent layered glassmorphism styled in **Calibri**, anchored by an animated crystal-prism **JoLT** brand emblem and **4 instant color shade palettes** (**Aurora**, **Cobalt**, **Jade**, **Orchid**) persisted in `localStorage`.
-- **10-Agent Decision Architecture**: Decomposes market intelligence across 4 execution stages with weighted Bayesian consensus voting (`1.0x` to `1.5x` confidence weights), mandatory invalidation triggers, and anti-hallucination guardrails.
-- **JoLT Sentiment Engine**: Financial NLP classifier built around a BERT-base-uncased / Financial PhraseBank 3-class softmax framework (**Positive**, **Neutral**, **Negative**) outputting logits, confidence percentages, and net polarity scores `P(pos) - P(neg)`.
-- **Global Instant Stock & Sector Search**: Search any cataloged or custom NSE/BSE ticker (e.g., `HAL`, `BPCL`, `TCS`, `RELIANCE`, `KAYNES`), jump straight to **Stock Deep Dive** diagnostics, or filter sector M&A flows and live news.
-- **Custom Event Simulation via Gemini**: Test custom headlines, RBI/SEBI policy changes, or geopolitical shocks on demand using Google Gemini (`gemini-3.6-flash` / `gemini-3.1-flash-lite` failover) with automatic structured fallback if API quota is exhausted or unconfigured.
+- **Dynamic Color Shade Palettes & Crystal Glassmorphism**: Switch instantaneously across **4 multi-shade themes** (**Aurora**, **Cobalt**, **Jade**, and **Orchid**) saved in `localStorage`. Features floating multi-orb ambient canvas gradients, jewel-tone shimmering gradients, translucent glass cards/modals, unified **Calibri** (with `Carlito` webfont fallback) typography, and tabular numeric alignment.
+- **Kinetic Prism JoLT Logo**: Animated rotating iridescent prism border, breathing glow halo, specular sheen sweep, and palette-reactive lightning-pulse SVG emblem that navigates back to **Today's Morning Report** on click.
+- **Live Real-Time Market & Commodity Ticker**: Streams live pricing for **NIFTY 50**, **SENSEX**, **BANK NIFTY**, **NIFTY IT**, **NIFTY PHARMA**, **BRENT CRUDE (`BZ=F`)**, **USD / INR (`INR=X`)**, and **INDIA VIX (`^INDIAVIX`)**, plus **11 NSE sector indices** and **57+ tracked NSE equities**, synced automatically every 60 seconds via Yahoo Finance (`query1`/`query2` failover + corporate ticker alias resolution) and reflected across Morning Reports, Sector Heatmaps, and Stock Deep Dives.
+- **Global Instant Stock & Sector Search**: Keyboard-navigable (`↑`/`↓`/`Enter`/`Esc`) search bar indexed across Morning Focus stocks, Sector stocks, Live News tickers, and blue-chip NSE equities—plus on-demand lookup for any custom `<SYMBOL>.NS` ticker, sector jump, or live news filtering.
+- **High-Impact Alert Toasts**: Automatically displays floating glassmorphic toast notifications for high-impact or `>=95%` conviction market events with target ticker chips, expected volatility drift, and one-click **View Transmission →** or **Stock Deep Dive** launch.
+- **JoLT Sentiment Engine (`ProsusAI/finbert`)**: 3-class financial NLP classifier (**Positive**, **Neutral**, **Negative**) outputting softmax probabilities, logits, net polarity `P(pos) - P(neg)`, clause-level breakdown, and entity sentiments—supporting remote Hugging Face Inference API calls with deterministic local engine fallback.
+- **Test Event via Gemini & Stock Deep Dive**: Run on-demand causal analyses for arbitrary macro/policy headlines (`/api/analyze-news`) or single-stock diagnostics (`/api/analyze-stock`) powered by Google Gemini (`gemini-3.6-flash` / `gemini-3.1-flash-lite` failover) with institutional heuristic fallbacks and live share quotes (`/api/live-quote/:symbol`).
 
 ---
 
 ## The 10 Specialized Agents
 
-JoLT splits equity event analysis into **10 autonomous analytical bots** coordinated across a **4-stage consensus pipeline**:
+JoLT decomposes Indian equity event analysis into **10 autonomous analytical bots** coordinated across a **4-stage consensus pipeline**:
 
 | # | Agent Name | Confidence Weight | Core Role & Analytical Specialization | Active Guardrail |
 |---|------------|-------------------|---------------------------------------|------------------|
@@ -53,29 +54,30 @@ JoLT splits equity event analysis into **10 autonomous analytical bots** coordin
 ### 1. 4-Stage Collaborative Execution Pipeline
 1. **Stage I — Ingestion & Verification**: `News Collection` & `Source Verification` bots filter rumor noise, normalize timestamps to IST, deduplicate overlapping wires, and verify statutory provenance.
 2. **Stage II — Entity & Sentiment Mapping**: `Entity Mapping` links events to primary NSE/BSE tickers and supply-chain peers while the **JoLT Sentiment Engine** computes institutional polarity (`[-1.00, +1.00]`) across Positive, Neutral, and Negative softmax classes.
-3. **Stage III — Domain Deep Dive (Parallel)**: `Fundamental`, `Technical`, `Geopolitical`, and `Market Regime` bots concurrently run valuation sensitivity, delivery/OI volume checks, commodity FX impact, and liquidity posture scoring.
+3. **Stage III — Domain Deep Dive (Parallel)**: `Fundamental`, `Technical`, `Geopolitical`, and `Market Regime` bots concurrently run valuation sensitivity, delivery/OI volume checks, commodity/FX impact, and liquidity posture scoring.
 4. **Stage IV — Risk & Final Synthesis**: `Risk & Transmission` defines falsifiable invalidation criteria, and `Final Synthesis & Guardrail` outputs calibrated return ranges and a SHA-256 audit ID.
 
 ### 2. Full-Stack Architecture (`React 19 + Express + Vite 6`)
-- **Single-Port Server (`server.ts`, Port `3000`)**: Runs an Express backend that serves `/api/*` routes and mounts `vite.middlewares` during development (or static bundle assets in production).
-- **Live Market Data Layer**: Fetches live quotes asynchronously in throttled batches (`8` symbols/batch) with host rotation (`query1.finance.yahoo.com` / `query2.finance.yahoo.com`), ticker aliasing (e.g., `TATAMOTORS.NS` / `TMCV.NS`, `ZOMATO.NS` / `ETERNAL.NS`), 2-minute per-symbol caching, and automatic live price propagation into indices, sector tiles, and stock deep-dive cards.
-- **Gemini AI Event & Equity Engine**: Uses `@google/genai` server-side with automatic failover between `gemini-3.6-flash` and `gemini-3.1-flash-lite` (4s timeout + 5-minute quota cooldown protection) to analyze arbitrary user-submitted market events (`/api/analyze-news`) and generate structured stock deep-dive briefings (`/api/analyze-stock`).
-- **Calibration & Safety Guardrails**: Tracks historical predictions against realized 1-day and 5-day NSE returns (**`79.4%` Directional Hit Rate** across tracked events, **`0.038` Brier Calibration Score**, **`94.2%` Cross-Source Quorum**).
+- **Unified Server (`server.ts`, Port `3000`)**: Runs an Express API backend that mounts `vite.middlewares` in development and serves the built `dist/` bundle in production.
+- **Live Market Quote Engine**: Fetches batched Yahoo Finance v8 Chart data (`8` symbols/batch, rotating `query1`/`query2` hosts, 3-minute snapshot cache, 2-minute per-symbol cache) with automatic ticker aliasing (`TATAMOTORS.NS` → `TMCV.NS`/`TMPV.NS`, `ZOMATO.NS` → `ETERNAL.NS`, `NIPPONLIFE.NS` → `NAM-INDIA.NS`). Propagates live prices and `%` moves into the header ticker, Morning Report copy summary, Sector Heatmap tiles, and Stock Deep Dive modal.
+- **AI Synthesis & Failover**: Uses `@google/genai` server-side (`gemini-3.6-flash` → `gemini-3.1-flash-lite` failover with 4-second timeout and 5-minute quota cooldown) for custom event and equity analysis, seamlessly falling back to deterministic institutional heuristics if unconfigured or rate-limited.
+- **Sentiment Inference Engine**: Evaluates headlines and statutory disclosures via `ProsusAI/finbert` on Hugging Face Inference API (when available/configured) with an automatic calibrated local neural scoring fallback, returning probabilities, logits, clauses, and ticker sentiments.
+- **Calibration & Safety Guardrails**: Tracks predictions against realized 1-day and 5-day NSE returns (**`79.4%` Directional Hit Rate** across tracked events, **`0.038` Brier Calibration Score**, **`94.2%` Cross-Source Quorum**).
 
 ### Backend API Endpoints
 
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
 | `GET` | `/api/health` | Service health check and Gemini configuration status |
-| `GET` | `/api/live-market` | Live NIFTY/SENSEX/commodity benchmarks, sector changes, and tracked NSE quotes (`?refresh=true` supported) |
-| `GET` | `/api/live-quote/:symbol` | On-demand live quote lookup for any NSE/BSE symbol |
+| `GET` | `/api/live-market` | Live NIFTY/SENSEX/Brent/FX benchmarks, 11 sector changes, and 57+ tracked NSE quotes (`?refresh=1` supported) |
+| `GET` | `/api/live-quote/:symbol` | On-demand live share price quote lookup for any NSE/BSE symbol |
 | `GET` | `/api/official-data` | Statutory market intelligence feed and scheduler metadata |
-| `POST` | `/api/verify-source` | Cross-verifies a source URL or news snippet against statutory registry patterns |
-| `GET` | `/api/scheduler-status` | Returns ingestion worker timings and live market phase status |
+| `POST` | `/api/verify-source` | Cross-verifies a source URL, outlet name, or headline against statutory & Tier-1 registries |
+| `GET` | `/api/scheduler-status` | Returns 24/7 background worker sync cycles and IST timestamps |
 | `POST` | `/api/finbert/analyze` | Single-headline 3-class softmax analysis via JoLT Sentiment Engine |
-| `POST` | `/api/finbert/batch` | Batch sentiment inference across multiple headlines |
-| `POST` | `/api/analyze-news` | Runs Gemini + 10-Agent causal transmission analysis on a custom news event |
-| `POST` | `/api/analyze-stock` | Generates deep-dive causal, technical, fundamental, and invalidation diagnostics for a ticker |
+| `POST` | `/api/finbert/batch` | Batch sentiment inference across up to 15 headlines |
+| `POST` | `/api/analyze-news` | Runs Gemini + 10-Agent causal transmission analysis + sentiment scoring on a custom news event |
+| `POST` | `/api/analyze-stock` | Generates single-stock deep-dive drivers, Bull/Base/Bear scenarios, invalidation triggers, and agent votes |
 
 ---
 
@@ -83,28 +85,28 @@ JoLT splits equity event analysis into **10 autonomous analytical bots** coordin
 
 > **Open Instantly Online:** Visit the published JoLT deployment at **[https://jolt-app.ai.studio](https://jolt-app.ai.studio)** — no local installation required.
 
-1. **Switch Color Palettes & Monitor Live Ticker**: Use the top-left switcher (**Aurora**, **Cobalt**, **Jade**, **Orchid**) to change the dynamic glassmorphism theme on the fly, while the top ticker bar streams live **NIFTY 50**, **SENSEX**, **BANK NIFTY**, **NIFTY IT**, **NIFTY PHARMA**, **BRENT CRUDE**, **USD / INR**, and **INDIA VIX**.
-2. **Search Any Stock or Sector**: Type a symbol or company name (such as `HAL`, `BPCL`, `TCS`, `KAYNES`, or any custom `.NS` symbol) in the header search bar. Press **Enter** or click a result to open the **Stock Deep Dive Modal**, or jump directly to matching sectors and news items.
-3. **Navigate the 6 Core Workspace Tabs**:
-   - **Today's Morning Report**: Review overnight global & geopolitical developments, institutional FII/DII flows, top stocks requiring attention, and trigger **Refresh Feeds**, **Copy Briefing**, or **Simulate Shock**.
-   - **Live News & Transmission Feed**: Filter statutory filings by source (`SEBI & RBI`, `NSE / BSE Filings`, `PIB / Govt Gazette`), impact level, or sector, inspect causal drivers, verify external sources, or click **View Transmission** to open the causal chain modal.
-   - **Sectors & M&A Heatmap**: Inspect relative session performance across 11 NSE sector indices sized by Nifty weight, filter 22+ high-value deals (`M&A`, `Govt Capex`, `Private Equity`, `Strategic Stake`, `Joint Venture`, `Divestment`), or run a **Sector Shock** simulation.
-   - **JoLT Sentiment Engine**: Paste any corporate filing, RBI note, or financial headline—or click preset Indian equity scenarios—to inspect real-time 3-class softmax probabilities (`Positive`, `Neutral`, `Negative`), logits, and net polarity scores.
-   - **10-Agent Pipeline Inspector**: Inspect each agent's role, confidence weight (`1.0x–1.5x`), latest execution log, and active guardrail across the 4-stage pipeline, or click **Simulate Pipeline on Event**.
-   - **Guardrails & Accuracy Tracking (`79.4%`)**: Audit JoLT's historical directional accuracy, Brier calibration metrics (`0.038`), suppressed rumors, and 1-day/5-day realized vs. predicted return replays.
-4. **Test Custom Scenarios**: Click **Test Event via Gemini** in the header at any time to inject a hypothetical macro, regulatory, or corporate shock and watch JoLT map affected NSE/BSE winners, losers, transmission mechanics, and invalidation triggers.
+1. **Switch Color Palettes & Monitor Live Ticker**: Use the top-left switcher (**Aurora**, **Cobalt**, **Jade**, **Orchid**) to change the dynamic color theme on the fly while monitoring live **NIFTY 50**, **SENSEX**, **BANK NIFTY**, **NIFTY IT**, **NIFTY PHARMA**, **BRENT CRUDE**, **USD / INR**, and **INDIA VIX**, alongside the real-time IST market session clock.
+2. **Search Any Stock or Sector**: Type any NSE/BSE symbol or company name (e.g., `HAL`, `BPCL`, `TCS`, `KAYNES`, `RELIANCE`, or any custom ticker) in the header search bar. Use arrow keys or click a match (or press **Enter**) to open the **Stock Deep Dive Modal** with live `₹` share pricing, or jump to matching Sectors and Live News.
+3. **Explore the 6 Workspace Tabs**:
+   - **Today's Morning Report**: Inspect overnight global developments, Brent crude & FX rationale, FII/DII institutional cash/futures flows, focus stocks, and use **Refresh Feeds**, **Copy Briefing** (copies live formatted metrics), or **Simulate Shock**.
+   - **Live News & Transmission Feed**: Filter statutory announcements (`SEBI & RBI`, `NSE / BSE Filings`, `PIB / Govt Gazette`), impact level, or sector; inspect per-clause JoLT Sentiment breakdowns; run **Verify Any Source / Filing**; simulate fresh high-impact breaking alerts; or open **View Transmission** for step-by-step causal cascades.
+   - **Sectors & M&A Heatmap**: Monitor real-time session return tiles across 11 NSE sectors weighted by Nifty capitalization, drill down into constituent live stock quotes, filter 22+ major corporate/govt capex/M&A deals (`M&A`, `Govt Capex`, `Private Equity`, `Strategic Stake`, `Joint Venture`, `Divestment`), or run **Simulate Sector Shock**.
+   - **JoLT Sentiment Engine**: Paste any financial filing, earnings note, or macro headline—or click preset Indian equity scenarios—to inspect 3-class softmax probabilities (`Positive`, `Neutral`, `Negative`), logits, polarity score, clause sentiments, and entity bias.
+   - **10-Agent Pipeline Inspector**: Inspect each agent's role, Bayesian weight (`1.0x–1.5x`), specialization, latest action, and active safety guardrail across all 4 pipeline stages, or launch **Simulate Pipeline on Event**.
+   - **Guardrails & Accuracy Tracking (`79.4%`)**: Audit JoLT's historical directional accuracy, Brier calibration score (`0.038`), cross-source quorum (`94.2%`), suppressed rumors, and historical 1-day/5-day realized vs. predicted return replays.
+4. **Interact with High-Impact Toasts & Gemini Simulation**: Click **Test Event via Gemini** in the header anytime to run a custom macro or corporate shock analysis, or click any ticker inside a **High Impact News Added** toast notification to inspect its deep dive or causal transmission chain.
 
 ---
 
 ## How to Download & Run Locally
 
 ### Prerequisites
-- **Node.js** `v18.0+` (recommended `v20+` or `v22+`)
+- **Node.js** `v18.0+` (`v20+` or `v22+` recommended)
 - **npm** (bundled with Node.js)
-- Optional: A **Google Gemini API key** (`GEMINI_API_KEY`) for live AI event & equity synthesis (the app includes a structured deterministic fallback if `GEMINI_API_KEY` is omitted).
+- Optional: A **Google Gemini API key** (`GEMINI_API_KEY`) for live Gemini synthesis, and optionally a **Hugging Face token** (`HF_TOKEN`) for remote FinBERT inference (structured local fallbacks work out of the box if omitted).
 
 ### 1. Download the Repository
-Clone the project with Git or download and extract the ZIP archive from your repository host:
+Clone the repository with Git or download and extract the project archive:
 
 ```bash
 git clone <your-repository-url> jolt-market-intelligence
@@ -117,7 +119,7 @@ npm install
 ```
 
 ### 3. Configure Environment Variables
-Copy `.env.example` to `.env` in the project root and add your values:
+Copy `.env.example` to `.env` in the project root:
 
 ```bash
 cp .env.example .env
@@ -131,7 +133,7 @@ APP_URL="http://localhost:3000"
 
 ### 4. Run the Application
 
-**Development Mode (Express API + Vite HMR/Middleware on port `3000`):**
+**Development Mode (Express API + Vite Middleware on port `3000`):**
 ```bash
 npm run dev
 ```
@@ -142,12 +144,12 @@ npm run build
 npm start
 ```
 
-**Type Check:**
+**TypeScript Check:**
 ```bash
 npm run lint
 ```
 
-Once running, open **`http://localhost:3000`** in your browser.
+Open **`http://localhost:3000`** in your browser.
 
 ---
 
@@ -155,7 +157,7 @@ Once running, open **`http://localhost:3000`** in your browser.
 
 - **Frontend**: React 19, TypeScript 5.7, Vite 6, Tailwind CSS v4, Lucide Icons, Motion (`motion/react`), jsPDF
 - **Backend**: Node.js, Express 4, `tsx`, `dotenv`
-- **AI & Data**: `@google/genai` (`gemini-3.6-flash` / `gemini-3.1-flash-lite`), Yahoo Finance v8 Chart API, JoLT Sentiment Engine (`Financial PhraseBank` 3-class calibration)
+- **AI & Live Data**: `@google/genai` (`gemini-3.6-flash` / `gemini-3.1-flash-lite`), Yahoo Finance v8 Chart API, JoLT Sentiment Engine (`ProsusAI/finbert` 3-class softmax calibration)
 
 ---
 
