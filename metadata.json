@@ -1,0 +1,7 @@
+{
+  "name": "JoLT - Indian Stock Market Intelligence & Decision Support",
+  "description": "AI-powered Indian market intelligence platform continuously synthesizing global, geopolitical, and domestic corporate news into NSE/BSE stock impacts, transmission mechanisms, and morning intelligence reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

@@ -1,0 +1,637 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Dynamic Multi-Shade Color Palette System
+   Default: Aurora Prism (Indigo · Sapphire · Ocean Teal · Orchid · Coral)
+   ========================================================================== */
+:root,
+[data-palette="aurora"] {
+  --canvas-gradient: linear-gradient(125deg, #eef2ff 0%, #f0f9ff 28%, #ecfeff 54%, #f5f3ff 78%, #fff1f2 100%);
+  --orb-1: radial-gradient(circle, rgba(79, 70, 229, 0.24) 0%, rgba(56, 189, 248, 0.14) 48%, transparent 72%);
+  --orb-2: radial-gradient(circle, rgba(13, 148, 136, 0.22) 0%, rgba(16, 185, 129, 0.12) 48%, transparent 72%);
+  --orb-3: radial-gradient(circle, rgba(147, 51, 234, 0.20) 0%, rgba(244, 63, 94, 0.13) 48%, transparent 72%);
+  --orb-4: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(245, 158, 11, 0.10) 52%, transparent 74%);
+
+  --shade-brand: linear-gradient(120deg, #1e1b4b 0%, #3730a3 28%, #0284c7 62%, #0d9488 85%, #7c3aed 100%);
+  --shade-primary: linear-gradient(135deg, #1e3a8a 0%, #4338ca 35%, #0284c7 72%, #0d9488 100%);
+  --shade-secondary: linear-gradient(135deg, #7c2d12 0%, #be123c 45%, #7e22ce 100%);
+
+  --accent-solid: #2563eb;
+  --accent-text: #1e40af;
+  --accent-border: rgba(59, 130, 246, 0.32);
+  --accent-top-border: rgba(99, 102, 241, 0.55);
+  --accent-tint: rgba(59, 130, 246, 0.12);
+  --accent-glow: rgba(37, 99, 235, 0.14);
+
+  --glass-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(240, 247, 255, 0.62) 55%, rgba(245, 243, 255, 0.68) 100%);
+  --glass-accent-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(238, 242, 255, 0.68) 45%, rgba(236, 254, 255, 0.72) 100%);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(239, 246, 255, 0.86) 100%);
+  --glass-hover-border: rgba(37, 99, 235, 0.48);
+  --glass-hover-shadow: 0 14px 32px -8px rgba(37, 99, 235, 0.14), 0 4px 16px -4px rgba(13, 148, 136, 0.12);
+
+  --cta-gradient: linear-gradient(135deg, #3730a3 0%, #2563eb 52%, #0d9488 100%);
+  --cta-hover-gradient: linear-gradient(135deg, #4338ca 0%, #1d4ed8 52%, #0f766e 100%);
+  --cta-shadow: 0 8px 22px -4px rgba(37, 99, 235, 0.34);
+  --cta-text: #ffffff;
+
+  --badge-gradient: linear-gradient(135deg, rgba(79, 70, 229, 0.14) 0%, rgba(14, 165, 233, 0.14) 55%, rgba(13, 148, 136, 0.14) 100%);
+  --scrollbar-hover: rgba(37, 99, 235, 0.65);
+  --selection-bg: rgba(59, 130, 246, 0.22);
+  --selection-text: #1e1b4b;
+
+  --logo-stop-1: #3730a3;
+  --logo-stop-2: #0ea5e9;
+  --logo-stop-3: #14b8a6;
+  --logo-stop-4: #9333ea;
+}
+
+[data-palette="sapphire"] {
+  --canvas-gradient: linear-gradient(125deg, #eff6ff 0%, #f0f9ff 35%, #fefce8 70%, #f8fafc 100%);
+  --orb-1: radial-gradient(circle, rgba(29, 78, 216, 0.24) 0%, rgba(14, 165, 233, 0.14) 50%, transparent 72%);
+  --orb-2: radial-gradient(circle, rgba(245, 158, 11, 0.20) 0%, rgba(251, 191, 36, 0.12) 50%, transparent 72%);
+  --orb-3: radial-gradient(circle, rgba(6, 182, 212, 0.20) 0%, rgba(59, 130, 246, 0.12) 50%, transparent 72%);
+  --orb-4: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(245, 158, 11, 0.10) 52%, transparent 74%);
+
+  --shade-brand: linear-gradient(120deg, #0c4a6e 0%, #1d4ed8 38%, #0284c7 68%, #b45309 100%);
+  --shade-primary: linear-gradient(135deg, #0f172a 0%, #1d4ed8 42%, #0284c7 75%, #b45309 100%);
+  --shade-secondary: linear-gradient(135deg, #92400e 0%, #d97706 50%, #0369a1 100%);
+
+  --accent-solid: #1d4ed8;
+  --accent-text: #1e3a8a;
+  --accent-border: rgba(29, 78, 216, 0.30);
+  --accent-top-border: rgba(217, 119, 6, 0.50);
+  --accent-tint: rgba(29, 78, 216, 0.11);
+  --accent-glow: rgba(29, 78, 216, 0.14);
+
+  --glass-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(239, 246, 255, 0.64) 60%, rgba(254, 252, 232, 0.60) 100%);
+  --glass-accent-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(239, 246, 255, 0.72) 55%, rgba(254, 243, 199, 0.56) 100%);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(239, 246, 255, 0.88) 100%);
+  --glass-hover-border: rgba(29, 78, 216, 0.45);
+  --glass-hover-shadow: 0 14px 32px -8px rgba(29, 78, 216, 0.14), 0 4px 16px -4px rgba(217, 119, 6, 0.12);
+
+  --cta-gradient: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #d97706 100%);
+  --cta-hover-gradient: linear-gradient(135deg, #172554 0%, #1e40af 55%, #b45309 100%);
+  --cta-shadow: 0 8px 22px -4px rgba(29, 78, 216, 0.32);
+  --cta-text: #ffffff;
+
+  --badge-gradient: linear-gradient(135deg, rgba(29, 78, 216, 0.14) 0%, rgba(14, 165, 233, 0.14) 55%, rgba(217, 119, 6, 0.14) 100%);
+  --scrollbar-hover: rgba(29, 78, 216, 0.65);
+  --selection-bg: rgba(29, 78, 216, 0.20);
+  --selection-text: #0c4a6e;
+
+  --logo-stop-1: #1e3a8a;
+  --logo-stop-2: #0284c7;
+  --logo-stop-3: #f59e0b;
+  --logo-stop-4: #2563eb;
+}
+
+[data-palette="emerald"] {
+  --canvas-gradient: linear-gradient(125deg, #ecfdf5 0%, #f0fdfa 32%, #f0f9ff 65%, #fff1f2 100%);
+  --orb-1: radial-gradient(circle, rgba(5, 150, 105, 0.24) 0%, rgba(20, 184, 166, 0.14) 50%, transparent 72%);
+  --orb-2: radial-gradient(circle, rgba(14, 165, 233, 0.20) 0%, rgba(45, 212, 191, 0.12) 50%, transparent 72%);
+  --orb-3: radial-gradient(circle, rgba(244, 63, 94, 0.18) 0%, rgba(251, 146, 60, 0.12) 50%, transparent 72%);
+  --orb-4: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(245, 158, 11, 0.10) 52%, transparent 74%);
+
+  --shade-brand: linear-gradient(120deg, #064e3b 0%, #059669 36%, #0284c7 70%, #e11d48 100%);
+  --shade-primary: linear-gradient(135deg, #065f46 0%, #0d9488 45%, #0284c7 85%);
+  --shade-secondary: linear-gradient(135deg, #be123c 0%, #ea580c 50%, #0d9488 100%);
+
+  --accent-solid: #059669;
+  --accent-text: #065f46;
+  --accent-border: rgba(5, 150, 105, 0.32);
+  --accent-top-border: rgba(13, 148, 136, 0.55);
+  --accent-tint: rgba(5, 150, 105, 0.12);
+  --accent-glow: rgba(5, 150, 105, 0.14);
+
+  --glass-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(236, 253, 245, 0.62) 55%, rgba(240, 249, 255, 0.66) 100%);
+  --glass-accent-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(236, 253, 245, 0.72) 50%, rgba(240, 253, 250, 0.72) 100%);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(236, 253, 245, 0.88) 100%);
+  --glass-hover-border: rgba(5, 150, 105, 0.48);
+  --glass-hover-shadow: 0 14px 32px -8px rgba(5, 150, 105, 0.15), 0 4px 16px -4px rgba(14, 165, 233, 0.12);
+
+  --cta-gradient: linear-gradient(135deg, #065f46 0%, #059669 52%, #0284c7 100%);
+  --cta-hover-gradient: linear-gradient(135deg, #064e3b 0%, #047857 52%, #0369a1 100%);
+  --cta-shadow: 0 8px 22px -4px rgba(5, 150, 105, 0.32);
+  --cta-text: #ffffff;
+
+  --badge-gradient: linear-gradient(135deg, rgba(5, 150, 105, 0.14) 0%, rgba(13, 148, 136, 0.14) 55%, rgba(2, 132, 199, 0.14) 100%);
+  --scrollbar-hover: rgba(5, 150, 105, 0.65);
+  --selection-bg: rgba(16, 185, 129, 0.22);
+  --selection-text: #064e3b;
+
+  --logo-stop-1: #065f46;
+  --logo-stop-2: #10b981;
+  --logo-stop-3: #0ea5e9;
+  --logo-stop-4: #f43f5e;
+}
+
+[data-palette="orchid"] {
+  --canvas-gradient: linear-gradient(125deg, #faf5ff 0%, #fdf2f8 34%, #eff6ff 68%, #fff7ed 100%);
+  --orb-1: radial-gradient(circle, rgba(147, 51, 234, 0.22) 0%, rgba(236, 72, 153, 0.14) 50%, transparent 72%);
+  --orb-2: radial-gradient(circle, rgba(225, 29, 72, 0.19) 0%, rgba(249, 115, 22, 0.12) 50%, transparent 72%);
+  --orb-3: radial-gradient(circle, rgba(59, 130, 246, 0.20) 0%, rgba(99, 102, 241, 0.12) 50%, transparent 72%);
+  --orb-4: radial-gradient(circle, rgba(217, 70, 239, 0.16) 0%, rgba(245, 158, 11, 0.10) 52%, transparent 74%);
+
+  --shade-brand: linear-gradient(120deg, #4c1d95 0%, #9333ea 35%, #e11d48 70%, #ea580c 100%);
+  --shade-primary: linear-gradient(135deg, #581c87 0%, #9333ea 42%, #e11d48 80%, #f59e0b 100%);
+  --shade-secondary: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #db2777 100%);
+
+  --accent-solid: #9333ea;
+  --accent-text: #6b21a8;
+  --accent-border: rgba(147, 51, 234, 0.32);
+  --accent-top-border: rgba(225, 29, 72, 0.50);
+  --accent-tint: rgba(147, 51, 234, 0.12);
+  --accent-glow: rgba(147, 51, 234, 0.14);
+
+  --glass-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(250, 245, 255, 0.64) 55%, rgba(253, 242, 248, 0.68) 100%);
+  --glass-accent-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.80) 0%, rgba(250, 245, 255, 0.70) 48%, rgba(255, 241, 242, 0.70) 100%);
+  --glass-hover-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(250, 245, 255, 0.88) 100%);
+  --glass-hover-border: rgba(147, 51, 234, 0.48);
+  --glass-hover-shadow: 0 14px 32px -8px rgba(147, 51, 234, 0.15), 0 4px 16px -4px rgba(225, 29, 72, 0.12);
+
+  --cta-gradient: linear-gradient(135deg, #581c87 0%, #9333ea 52%, #e11d48 100%);
+  --cta-hover-gradient: linear-gradient(135deg, #4c1d95 0%, #7e22ce 52%, #be123c 100%);
+  --cta-shadow: 0 8px 22px -4px rgba(147, 51, 234, 0.32);
+  --cta-text: #ffffff;
+
+  --badge-gradient: linear-gradient(135deg, rgba(147, 51, 234, 0.14) 0%, rgba(225, 29, 72, 0.14) 55%, rgba(245, 158, 11, 0.14) 100%);
+  --scrollbar-hover: rgba(147, 51, 234, 0.65);
+  --selection-bg: rgba(147, 51, 234, 0.22);
+  --selection-text: #4c1d95;
+
+  --logo-stop-1: #581c87;
+  --logo-stop-2: #a855f7;
+  --logo-stop-3: #e11d48;
+  --logo-stop-4: #f59e0b;
+}
+
+@theme {
+  --font-sans: 'Calibri', 'Carlito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Calibri', 'Carlito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Calibri', 'Carlito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html,
+  body,
+  button,
+  input,
+  textarea,
+  select,
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: 'Calibri', 'Carlito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background: var(--canvas-gradient);
+    background-size: 200% 200%;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Calibri Typography Classes */
+.font-classic-title {
+  font-family: 'Calibri', 'Carlito', 'Segoe UI', sans-serif;
+}
+
+.font-classic-serif {
+  font-family: 'Calibri', 'Carlito', 'Segoe UI', sans-serif;
+}
+
+.font-serif-classic {
+  font-family: 'Calibri', 'Carlito', 'Segoe UI', sans-serif;
+}
+
+.font-mono-num {
+  font-family: 'Calibri', 'Carlito', 'Segoe UI', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-numbers {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Dynamic Multi-Shade Jewel-Tone Typography
+   High-contrast color-shifting multi-stop blends on transparent light glass
+   ========================================================================== */
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes canvasDrift {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+.animate-canvas-flow {
+  background: var(--canvas-gradient);
+  background-size: 220% 220%;
+  animation: canvasDrift 22s ease-in-out infinite;
+}
+
+.font-shade-primary,
+.font-shade-gold {
+  background: var(--shade-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: textShimmer 9s ease infinite;
+}
+
+.font-shade-secondary,
+.font-shade-amber {
+  background: var(--shade-secondary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: textShimmer 11s ease infinite;
+}
+
+.font-shade-emerald {
+  background: linear-gradient(135deg, #064e3b 0%, #059669 38%, #0d9488 72%, #0284c7 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shade-cyan {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 38%, #0284c7 72%, #0d9488 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shade-rose {
+  background: linear-gradient(135deg, #881337 0%, #be123c 38%, #e11d48 72%, #ea580c 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shade-silver {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 42%, #334155 75%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shade-purple {
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 35%, #9333ea 70%, #db2777 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shade-bronze {
+  background: linear-gradient(135deg, #78350f 0%, #b45309 40%, #c2410c 75%, #be123c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-shimmer-dynamic,
+.font-shimmer-gold {
+  background: var(--shade-brand);
+  background-size: 260% 260%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: textShimmer 5.5s ease infinite;
+}
+
+/* Text glow utilities tuned for dynamic crystal glass */
+.text-glow-gold,
+.text-glow-primary {
+  text-shadow: 0 2px 10px var(--accent-glow);
+}
+
+.text-glow-emerald {
+  text-shadow: 0 2px 10px rgba(5, 150, 105, 0.22);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 2px 10px rgba(2, 132, 199, 0.22);
+}
+
+.text-glow-rose {
+  text-shadow: 0 2px 10px rgba(225, 29, 72, 0.22);
+}
+
+.text-glow-silver {
+  text-shadow: 0 1px 6px rgba(15, 23, 42, 0.14);
+}
+
+/* ==========================================================================
+   Dynamic Ambient Floating Animations
+   ========================================================================== */
+@keyframes dynamicOrb1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(70px, 45px) scale(1.16);
+  }
+}
+
+@keyframes dynamicOrb2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-60px, -45px) scale(1.14);
+  }
+}
+
+@keyframes dynamicOrb3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(45px, -55px) scale(0.92);
+  }
+}
+
+.animate-orb-1 {
+  animation: dynamicOrb1 16s ease-in-out infinite;
+}
+
+.animate-orb-2 {
+  animation: dynamicOrb2 20s ease-in-out infinite;
+}
+
+.animate-orb-3 {
+  animation: dynamicOrb3 18s ease-in-out infinite;
+}
+
+.bg-orb-1 {
+  background: var(--orb-1);
+}
+
+.bg-orb-2 {
+  background: var(--orb-2);
+}
+
+.bg-orb-3 {
+  background: var(--orb-3);
+}
+
+.bg-orb-4 {
+  background: var(--orb-4);
+}
+
+/* ==========================================================================
+   Crystal Transparent & Iridescent Glassmorphism Surfaces
+   ========================================================================== */
+.glass-panel {
+  background: var(--glass-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 30px -6px rgba(15, 23, 42, 0.06), 0 2px 10px -2px var(--accent-glow), inset 0 1px 1px rgba(255, 255, 255, 0.96);
+}
+
+.glass-panel-dynamic,
+.glass-panel-gold {
+  background: var(--glass-accent-surface);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+  border: 1px solid var(--accent-border);
+  border-top: 1px solid var(--accent-top-border);
+  box-shadow: 0 14px 36px -8px var(--accent-glow), 0 4px 12px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 18px -3px rgba(15, 23, 42, 0.05);
+}
+
+.glass-card-subtle {
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.90);
+}
+
+.glass-card-hover {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background 0.2s ease;
+}
+
+.glass-card-hover:hover {
+  background: var(--glass-hover-bg);
+  border-color: var(--glass-hover-border);
+  border-top-color: var(--accent-top-border);
+  box-shadow: var(--glass-hover-shadow);
+  transform: translateY(-1.5px);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.38);
+  border-top: 1px solid rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+}
+
+.glass-input:focus {
+  border-color: var(--glass-hover-border);
+  box-shadow: 0 0 14px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.glass-modal {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.16), 0 0 40px -10px var(--accent-glow);
+  color: #0f172a;
+}
+
+/* Dynamic Primary CTA & Badges */
+.btn-dynamic-primary {
+  background: var(--cta-gradient);
+  color: var(--cta-text);
+  box-shadow: var(--cta-shadow);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.btn-dynamic-primary:hover {
+  background: var(--cta-hover-gradient);
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.btn-dynamic-primary:active {
+  transform: scale(0.97);
+}
+
+.badge-dynamic-shade {
+  background: var(--badge-gradient);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-text);
+}
+
+/* Classic Financial Dynamic Transparent Background Grid */
+.bg-financial-grid {
+  background-image:
+    linear-gradient(to right, rgba(30, 58, 138, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 148, 136, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.45);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* ==========================================================================
+   Dynamic JoLT Crystal Prism Logo Animations
+   ========================================================================== */
+@keyframes joltLogoSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes joltLogoSheen {
+  0%, 70% {
+    transform: translateX(-140%) skewX(-22deg);
+    opacity: 0;
+  }
+  82% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(180%) skewX(-22deg);
+    opacity: 0;
+  }
+}
+
+@keyframes joltSignalFlow {
+  0% {
+    stroke-dashoffset: 38;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes joltHaloBreath {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.78;
+    transform: scale(1.08);
+  }
+}
+
+.jolt-logo-halo {
+  background: conic-gradient(
+    from 0deg,
+    var(--logo-stop-1),
+    var(--logo-stop-2),
+    var(--logo-stop-3),
+    var(--logo-stop-4),
+    var(--logo-stop-1)
+  );
+  animation: joltHaloBreath 4.5s ease-in-out infinite;
+}
+
+.jolt-logo-ring {
+  background: conic-gradient(
+    from 0deg,
+    var(--logo-stop-1),
+    var(--logo-stop-2),
+    var(--logo-stop-3),
+    var(--logo-stop-4),
+    var(--logo-stop-1)
+  );
+  animation: joltLogoSpin 7s linear infinite;
+}
+
+.group:hover .jolt-logo-ring {
+  animation-duration: 2.6s;
+}
+
+.jolt-logo-sheen {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 100%
+  );
+  animation: joltLogoSheen 5.5s ease-in-out infinite;
+}
+
+.jolt-signal-path {
+  stroke-dasharray: 22 16;
+  animation: joltSignalFlow 2.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-orb-3,
+  .animate-canvas-flow,
+  .font-shimmer-dynamic,
+  .font-shimmer-gold,
+  .font-shade-primary,
+  .font-shade-gold,
+  .font-shade-secondary,
+  .font-shade-amber,
+  .jolt-logo-halo,
+  .jolt-logo-ring,
+  .jolt-logo-sheen,
+  .jolt-signal-path {
+    animation: none !important;
+  }
+}
